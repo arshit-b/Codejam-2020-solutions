@@ -1,0 +1,95 @@
+#include<bits/stdc++.h>
+#include<algorithm>
+using namespace std;
+#define ll          long long
+#define double      long double
+#define endl        '\n'
+#define sz(x)       (int)(x).size()
+
+
+#define pb          push_back
+#define pf          push_front
+#define lb(v,n)     lower_bound(all((v)),(n))
+#define ub(v,n)     upper_bound(all((v)),(n))
+        
+#define vi          vector<int>
+#define vii         vector<pii>
+#define viiii       vector<pair<pii,pii>>
+        
+#define mi          map<int,int>
+#define mii         map<pii,int>
+        
+#define pii         pair<int,int>
+#define piii        pair<int,pair<int,int> >
+#define piiii       pair<pii,pii>
+#define fi          first
+#define se          second
+#define mp          make_pair
+#define all(a)      (a).begin(),(a).end()
+#define rall(a)     (a).rbegin(),(a).rend()
+        
+#define rep(X,Y) for (int (X) = 0;(X) < (Y);++(X))
+#define reps(X,S,Y) for (int (X) = S;(X) < (Y);++(X))
+#define rrep(X,Y) for (int (X) = (Y)-1;(X) >=0;--(X))
+#define rreps(X,S,Y) for (int (X) = (Y)-1;(X) >= (S);--(X))
+#define repe(X,Y) for ((X) = 0;(X) < (Y);++(X))
+#define toit ios::sync_with_stdio(0);cin.tie(0);
+        
+        
+        
+int gcd(int a, int b) {  if (b == 0)  return a; return gcd(b , a % b); }
+bool mod(double a,double b) {return a/b - floor(a/b);}
+        
+int occurs(vi v,int n){
+auto it=lb(v,n);auto it1=ub(v,n);int x=it1-it;return x;}
+        
+double max(double a,double b){
+    return a<b ? b:a;
+}
+
+
+
+int main()
+{toit
+    int t;
+    cin>>t;
+    int tc=0;
+    while(t--){
+        tc++;
+        int n;cin>>n;
+        vector<vector<bool>> row(n,vector<bool>(n,0)),col(n,vector<bool>(n,0));
+        int tr=0;
+        rep(i,n){
+            rep(j,n){
+                int x;cin>>x;
+                if(i == j){
+                    tr += x;
+                }
+                row[i][x-1] = 1;
+                col[j][x-1] = 1;
+                
+            }
+        }
+        int r=0;
+        rep(i,n){
+            bool b=1;
+            rep(j,n){
+                b&=row[i][j];
+            }if(!b) r++;
+        }
+        int c=0;
+        rep(j,n){
+            bool b=1;
+            rep(i,n){
+                b&=col[j][i];
+            }if(!b) c++;
+        }
+        cout<<"Case #"<<tc<<": "<<tr<<" "<<r<<" "<<c<<endl;
+    }
+    return 0;
+}
+
+
+
+
+
